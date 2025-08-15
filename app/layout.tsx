@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { ConvexProviderClient } from "@/components/providers/convex-provider";
+import { ThemeProvider } from "next-themes";
+import CulturalPattern from "@/components/site/CulturalPattern";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +26,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang='en' suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <ConvexProviderClient>
+          <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
+            <CulturalPattern />
+            <main className='min-h-[70vh]'>{children}</main>
+          </ThemeProvider>
+        </ConvexProviderClient>
       </body>
     </html>
   );
