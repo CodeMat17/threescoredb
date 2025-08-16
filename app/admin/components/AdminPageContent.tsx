@@ -190,6 +190,8 @@ export default function AdminPageContent() {
 
   return (
     <div className='container mx-auto space-y-8'>
+   
+
       <h1 className='text-2xl font-semibold sm:text-3xl'>Hero Carousel</h1>
 
       {/* Add Carousel */}

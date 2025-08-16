@@ -7,6 +7,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { SignedIn, UserButton } from "@clerk/nextjs";
 import { Menu } from "lucide-react";
 import Link from "next/link";
@@ -64,6 +65,7 @@ export default function AdminLayout({
           <SignedIn>
             <UserButton />
           </SignedIn>
+          <ThemeToggle />
 
           <Sheet>
             <SheetTrigger asChild>
@@ -91,10 +93,11 @@ export default function AdminLayout({
             Admin
           </div>
           <NavList />
-          <div className="mt-6 pl-3">
+          <div className='mt-6 flex items-center gap-3 pl-3'>
             <SignedIn>
               <UserButton />
             </SignedIn>
+            <ThemeToggle />
           </div>
         </aside>
         <section>{children}</section>
