@@ -1,4 +1,3 @@
-"use client";
 export const dynamic = "force-dynamic";
 
 import { Button } from "@/components/ui/button";
@@ -8,6 +7,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { SignedIn, UserButton } from "@clerk/nextjs";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import { Toaster } from "sonner";
@@ -59,19 +59,29 @@ export default function AdminLayout({
         <div className='text-sm font-semibold uppercase tracking-wide text-muted-foreground'>
           Admin
         </div>
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button variant='outline' size='icon' aria-label='Open admin menu'>
-              <Menu className='h-5 w-5' />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side='left' className='w-72 p-4'>
-            <div className='mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground'>
-              Menu
-            </div>
-            <NavList closeOnClick />
-          </SheetContent>
-        </Sheet>
+
+        <div className='flex items-center gap-4'>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button
+                variant='outline'
+                size='icon'
+                aria-label='Open admin menu'>
+                <Menu className='h-5 w-5' />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side='left' className='w-72 p-4'>
+              <div className='mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground'>
+                Menu
+              </div>
+              <NavList closeOnClick />
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
 
       <div className='grid gap-6 md:grid-cols-[240px_1fr]'>
@@ -81,6 +91,11 @@ export default function AdminLayout({
             Admin
           </div>
           <NavList />
+          <div className="mt-6 pl-3">
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </div>
         </aside>
         <section>{children}</section>
       </div>

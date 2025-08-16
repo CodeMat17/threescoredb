@@ -1,10 +1,17 @@
-import React from "react";
+import { checkRole } from "@/utils/roles";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
-const Home = () => {
+const Home = async () => {
+  if (await checkRole("admin")) {
+    redirect("/admin");
+  }
+
   return (
     <div className='container mx-auto flex min-h-[60vh] flex-col items-center justify-center gap-4 text-center'>
-      <h1 className='text-3xl font-semibold sm:text-4xl'>Welcome to ThreeScoreDB</h1>
+      <h1 className='text-3xl font-semibold sm:text-4xl'>
+        Welcome to ThreeScoreDB
+      </h1>
       <p className='max-w-xl text-balance text-muted-foreground'>
         Explore the site or head to the admin dashboard to manage content.
       </p>
