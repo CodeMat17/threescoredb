@@ -13,7 +13,7 @@ const Home = async () => {
 
   return (
     <div className='container mx-auto flex min-h-[60vh] flex-col items-center justify-center gap-4 text-center'>
-      <h1 className='text-3xl font-semibold sm:text-4xl'>
+      <h1 className='text-3xl font-semibold sm:text-4xl px-4 text-center'>
         Welcome to ThreeScoreDB
       </h1>
 
