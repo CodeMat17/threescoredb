@@ -6,7 +6,7 @@ import OrderedList from "@tiptap/extension-ordered-list";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { Bold, Italic, List, ListOrdered } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 export function TiptapEditor({
   value,
@@ -45,14 +45,11 @@ export function TiptapEditor({
     },
   });
 
-  const fileInputRef = useRef<HTMLInputElement | null>(null);
-
   useEffect(() => {
     if (!editor) return;
     if (typeof value === "string") {
       editor.commands.setContent(value);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor, value]);
 
   return (

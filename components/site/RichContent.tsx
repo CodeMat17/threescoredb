@@ -20,7 +20,6 @@ export function RichContent({ value }: { value: string }) {
   useEffect(() => {
     if (!editor) return;
     if (value) editor.commands.setContent(value);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor, value]);
 
   return <EditorContent editor={editor} />;
